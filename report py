@@ -1,0 +1,35 @@
+import pandas as pd
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+
+# Step 1: Read data from CSV file
+df = pd.read_csv("student_marks.csv")
+
+# Step 2: Analyze data
+average_marks = df["Marks"].mean()
+highest_marks = df["Marks"].max()
+lowest_marks = df["Marks"].min()
+
+# Step 3: Create PDF report
+doc = SimpleDocTemplate("Student_Report.pdf", pagesize=A4)
+styles = getSampleStyleSheet()
+elements = []
+
+elements.append(Paragraph("Automated Student Performance Report", styles["Title"]))
+elements.append(Paragraph(f"Average Marks: {average_marks:.2f}", styles["Normal"]))
+elements.append(Paragraph(f"Highest Marks: {highest_marks}", styles["Normal"]))
+elements.append(Paragraph(f"Lowest Marks: {lowest_marks}", styles["Normal"]))
+
+table_data = [df.columns.tolist()] + df.values.tolist()
+table = Table(table_data)
+table.setStyle(TableStyle([
+    ("BACKGROUND", (0,0), (-1,0), colors.lightgrey),
+    ("GRID", (0,0), (-1,-1), 1, colors.black)
+]))
+
+elements.append(table)
+doc.build(elements)
+
+print("PDF Report Generated Successfully")
