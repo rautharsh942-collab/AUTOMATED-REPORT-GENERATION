@@ -39,3 +39,4 @@ GitHub Repository: Contains the script, sample data file, generated report, and 
 🌟 Conclusion
 This project highlights the importance of automation in report generation and showcases the power of Python in handling real-world tasks efficiently. By completing this task, I gained valuable experience in data analysis, file handling, and PDF creation. The skills developed through this project are highly relevant for roles in data analytics, software development, and automation engineering.
 # OUTPUT:-
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/c6555466-aaee-4356-aa25-2e19a6e2149c" />
